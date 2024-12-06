@@ -1,0 +1,45 @@
+---
+# Source: wordpress-db/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wp-database
+  id: 
+  env: 
+  labels:
+    app: db
+    env: dev
+    id: C0901954
+    stack: wordpress
+spec:
+  selector:
+    matchLabels:
+      app: db
+      env: dev
+      id: C0901954
+      stack: wordpress
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: db
+        env: dev
+        id: C0901954
+        stack: wordpress
+    spec:
+      containers:
+      - name: wp-database
+        image: mariadb:10.6.4-focal
+        imagePullPolicy: Always
+        env:
+        - name: MARIADB_ROOT_PASSWORD
+          value: "mypassword"
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - name: wp-database-volume
+          mountPath: /var/lib/mysql       # Path inside container
+      volumes:
+      - name: wp-database-volume
+        hostPath:
+          path: /var/lib/wp-data     # Path in host machine

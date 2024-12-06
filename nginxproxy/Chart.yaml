@@ -1,0 +1,11 @@
+apiVersion: v1
+name: wordpress-proxy
+description: wordpress nginx proxy
+appVersion: 1.0.0
+version: 1.0.0
+keywords:
+  - nginx
+  - wordpress
+  - mariadb
+maintainers:
+  - name: Bhavani Chiluvuru

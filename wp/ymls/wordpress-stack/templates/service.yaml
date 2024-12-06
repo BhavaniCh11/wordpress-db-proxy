@@ -1,0 +1,24 @@
+---
+# Source: wordpress-stack/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: wpapp
+  id: 
+  env: 
+  labels:
+    app: wp
+    env: dev
+    id: C0901954
+    stack: wordpress
+spec:
+  ports:
+  - port: 80            # the port on which the service is listening
+    protocol: TCP
+    targetPort: 80      # the port exposed by Pod (we defined in the deployment as part of `containerPort)
+  type: NodePort
+  selector:
+    app: wp
+    env: dev
+    id: C0901954
+    stack: wordpress       # Pod label that service is using to select Pods

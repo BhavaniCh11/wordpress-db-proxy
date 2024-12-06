@@ -1,0 +1,15 @@
+nginx:
+  name: wp-nginxproxy                          
+  labels:
+    id: C0901954
+    app: wp-nginxproxy-app
+    env: dev
+  image:
+    repository: bhavanich11/nginx-custom
+    tag: latest
+    pullPolicy: Always
+  replicas: 1
+  service:                                  
+    type: LoadBalancer                         
+    port: 80                                    
+    targetPort: 80

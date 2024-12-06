@@ -1,0 +1,14 @@
+wp:
+  name: wpapp
+  labels:
+    app: wp
+    env: dev
+    id: C0901954
+    stack: wordpress
+  image:
+    repository: wordpress
+    tag: latest
+    pullPolicy: Always
+  replicas: 3
+  containerPorts:
+      http: 80

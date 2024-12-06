@@ -1,0 +1,10 @@
+apiVersion: v2
+name: wordpress-db
+description: Wordpress database for WP stack
+version: 1.0.0
+appVersion: 1.0.0
+keywords:
+  - wordpress
+  - mariadb
+maintainers:
+  - name: Bhavani Chiluvuru

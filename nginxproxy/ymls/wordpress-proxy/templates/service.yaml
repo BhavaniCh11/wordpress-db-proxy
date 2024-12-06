@@ -1,0 +1,20 @@
+---
+# Source: wordpress-proxy/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: wp-nginxproxy          
+  labels:
+    app: wp-nginxproxy-app
+    env: dev
+    id: C0901954  
+spec:
+  type: LoadBalancer    
+  ports:
+    - port: 80       
+      protocol: TCP
+      targetPort: 80  
+  selector:
+    app: wp-nginxproxy-app
+    env: dev
+    id: C0901954

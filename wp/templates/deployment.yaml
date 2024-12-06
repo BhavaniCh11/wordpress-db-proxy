@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.wp.name }}
+  id: {{ .Values.wp.id }}
+  env: {{ .Values.wp.env }}
+  labels:
+{{- toYaml .Values.wp.labels | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+{{- toYaml .Values.wp.labels | nindent 6 }}
+  replicas: 3
+  template:
+    metadata:
+      labels:
+{{- toYaml .Values.wp.labels | nindent 8 }}
+    spec:
+      containers:
+      - name: {{ .Values.wp.name }}
+        image: {{ .Values.wp.image.repository }}:{{ .Values.wp.image.tag }}
+        imagePullPolicy: {{ .Values.wp.image.pullPolicy }}
+        ports:
+        - containerPort: {{ .Values.wp.containerPorts.http }}

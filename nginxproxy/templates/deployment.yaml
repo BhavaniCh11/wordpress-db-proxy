@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.nginx.name }}
+  id: {{ .Values.nginx.id }}
+  env: {{ .Values.nginx.env }}
+  labels:
+{{- toYaml .Values.nginx.labels | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+{{- toYaml .Values.nginx.labels | nindent 6 }}
+  replicas: {{ .Values.nginx.replicas }}
+  template:
+    metadata:
+      labels:
+{{- toYaml .Values.nginx.labels | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Values.nginx.name }}
+          image: {{ .Values.nginx.image.repository }}:{{ .Values.nginx.image.tag }}
+          ports:
+            - containerPort: {{ .Values.nginx.service.targetPort }}
